@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Guess Game - Révolution</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particules d'arrière-plan -->
+    <div class="particles-container">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Vagues animées -->
+    <div class="waves">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+    </div>
+
+    <div id="app">
+        <h1 class="admin-title-glow" id="admin-title" style="display:none;">
+            <span class="glitch" data-text="PAGE ADMIN">PAGE ADMIN</span>
+        </h1>
+        
+        <h1 class="rainbow-title pulse-glow">
+            <span class="title-letter">T</span>
+            <span class="title-letter">h</span>
+            <span class="title-letter">e</span>
+            <span class="title-space"></span>
+            <span class="title-letter">G</span>
+            <span class="title-letter">u</span>
+            <span class="title-letter">e</span>
+            <span class="title-letter">s</span>
+            <span class="title-letter">s</span>
+            <span class="title-space"></span>
+            <span class="title-letter">G</span>
+            <span class="title-letter">a</span>
+            <span class="title-letter">m</span>
+            <span class="title-letter">e</span>
+        </h1>
+
+        <div id="login-container" class="glass-morphism slide-in">
+            <div class="login-header">
+                <h2 class="login-title">Connexion</h2>
+                <div class="login-subtitle">Entrez dans l'univers du jeu</div>
+            </div>
+            
+            <form id="login-form" onsubmit="handleLogin(event)" class="login-form">
+                <div class="input-group">
+                    <input type="text" id="username" name="username" required class="futuristic-input">
+                    <label for="username" class="floating-label">Nom d'utilisateur</label>
+                    <div class="input-highlight"></div>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" id="password" name="password" required class="futuristic-input">
+                    <label for="password" class="floating-label">Mot de passe</label>
+                    <div class="input-highlight"></div>
+                </div>
+                
+                <button type="submit" class="neon-button primary">
+                    <span class="button-text">Connexion</span>
+                    <div class="button-glow"></div>
+                </button>
+            </form>
+            
+            <button onclick="showRegisterForm()" class="neon-button secondary">
+                <span class="button-text">S'enregistrer</span>
+                <div class="button-glow"></div>
+            </button>
+        </div>
+    </div>
+
+    <div id="register-container" class="glass-morphism fade-in" style="display:none;">
+        <div class="login-header">
+            <h2 class="login-title">Inscription</h2>
+            <div class="login-subtitle">Rejoignez la communauté</div>
+        </div>
+        
+        <form id="register-form" onsubmit="handleRegister(event)" class="login-form">
+            <div class="input-group">
+                <input type="text" id="new-username" name="username" required class="futuristic-input">
+                <label for="new-username" class="floating-label">Nom d'utilisateur</label>
+                <div class="input-highlight"></div>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" id="new-password" name="password" required class="futuristic-input">
+                <label for="new-password" class="floating-label">Mot de passe</label>
+                <div class="input-highlight"></div>
+            </div>
+            
+            <button type="submit" class="neon-button primary">
+                <span class="button-text">Créer un compte</span>
+                <div class="button-glow"></div>
+            </button>
+        </form>
+        
+        <button onclick="showLoginForm()" class="neon-button secondary">
+            <span class="button-text">Retour</span>
+            <div class="button-glow"></div>
+        </button>
+    </div>
+
+    <div id="chat-container" class="game-container" style="display:none;">
+        <div class="game-header">
+            <h2 id="drawer-indicator" class="drawer-status">Dessinateur actuel : </h2>
+            <div class="status-lights">
+                <div class="status-light active"></div>
+                <div class="status-light"></div>
+                <div class="status-light"></div>
+            </div>
+        </div>
+
+        <div id="game-layout" class="game-grid">
+            <div id="drawing-area" class="drawing-section glass-panel">
+                <div class="section-header">
+                    <h3>Zone de Dessin</h3>
+                    <div class="header-glow"></div>
+                </div>
+                
+                <div class="canvas-container">
+                    <canvas id="whiteboard" width="800" height="400" class="drawing-canvas"></canvas>
+                    <div class="canvas-overlay"></div>
+                </div>
+                
+                <div class="drawing-controls">
+                    <button id="clear-whiteboard" class="action-button danger">
+                        <span>🗑️ Effacer</span>
+                        <div class="button-ripple"></div>
+                    </button>
+                    
+                    <div class="color-picker-section">
+                        <h4>Couleur</h4>
+                        <div class="color-picker-wrapper">
+                            <input type="color" id="pen-color" value="#000000" class="color-input">
+                            <div class="color-preview"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="chat-area" class="chat-section glass-panel">
+                <div class="section-header">
+                    <h3>Discussion</h3>
+                    <div class="header-glow"></div>
+                </div>
+                
+                <div id="chat-box" class="chat-messages"></div>
+                
+                <form id="chat-form" onsubmit="sendMessage(event)" class="chat-input-form">
+                    <div class="input-group chat-input-group">
+                        <input type="text" id="message" required class="chat-input">
+                        <button type="submit" class="send-button">
+                            <span>➤</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="word-selection" class="word-selection-modal" style="display:none;">
+            <div class="modal-content">
+                <h2 class="modal-title">Choisissez votre mot</h2>
+                <div id="words-container" class="words-grid"></div>
+            </div>
+        </div>
+
+        <div id="chosen-word" class="chosen-word-display" style="display:none;">
+            <div class="word-card">
+                <h3>Mot choisi</h3>
+                <span id="chosen-word-text" class="word-text"></span>
+            </div>
+        </div>
+
+        <div id="timer-container" class="timer-display" style="display:none;">
+            <div class="timer-card">
+                <div class="timer-icon">⏰</div>
+                <div class="timer-text">
+                    <span>Temps restant</span>
+                    <span id="timer-display" class="timer-value">90</span>
+                </div>
+                <div class="timer-bar">
+                    <div class="timer-progress"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="scores-container" class="scores-panel" style="display:none;">
+            <div class="scores-header">
+                <h3>Scores</h3>
+                <div class="trophy-icon">🏆</div>
+            </div>
+            <div id="scores-list" class="scores-list"></div>
+        </div>
+
+        <div id="highscores-container" class="highscores-panel">
+            <div id="highscores-list" style="display: none;" class="highscores-content"></div>
+        </div>
+    </div>
+
+    <div id="admin-container" class="admin-interface" style="display:none;">
+        <div class="admin-grid">
+            <div id="admin-stats" class="admin-section">
+                <h2 class="admin-section-title">
+                    <span class="section-icon">📊</span>
+                    Statistiques
+                </h2>
+                <button onclick="fetchAdminStats()" class="admin-button">Voir les statistiques</button>
+                <div id="stats-display" class="admin-content"></div>
+            </div>
+    
+            <div id="admin-users" class="admin-section">
+                <h2 class="admin-section-title">
+                    <span class="section-icon">👥</span>
+                    Utilisateurs
+                </h2>
+                <button onclick="fetchAdminUsers()" class="admin-button">Lister les utilisateurs</button>
+                <div id="admin-users-list" class="admin-content"></div>
+            </div>
+    
+            <div id="admin-scores" class="admin-section">
+                <h2 class="admin-section-title">
+                    <span class="section-icon">🏆</span>
+                    Scores
+                </h2>
+                <button onclick="fetchAdminScores()" class="admin-button">Lister les scores</button>
+                <div id="admin-scores-list" class="admin-content"></div>
+            </div>
+    
+            <div id="admin-dictionnaire" class="admin-section">
+                <h2 class="admin-section-title">
+                    <span class="section-icon">📚</span>
+                    Dictionnaire
+                </h2>
+                <div class="dictionary-controls">
+                    <div class="input-group">
+                        <input type="text" id="search-word" placeholder="Rechercher un mot" class="admin-input">
+                        <button onclick="searchWordInDictionnaire()" class="admin-button search">Rechercher</button>
+                    </div>
+                    <div id="search-result" class="search-result"></div>
+                    <div class="input-group">
+                        <input type="text" id="new-word" placeholder="Ajouter un mot" class="admin-input">
+                        <button onclick="addWordToDictionnaire()" class="admin-button add">Ajouter</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Section des utilisateurs bannis - CORRECTEMENT PLACÉE -->
+            <div id="admin-banned-users" class="admin-section">
+                <h2 class="admin-section-title">
+                    <span class="section-icon">🚫</span>
+                    Utilisateurs bannis
+                </h2>
+                <button onclick="fetchBannedUsers()" class="admin-button">Voir les utilisateurs bannis</button>
+                <div id="banned-users-list" class="admin-content"></div>
+                
+                <div class="ban-controls" style="margin-top: 1rem;">
+                    <h4 style="color: #00ff00; margin-bottom: 0.5rem;">Bannir un utilisateur</h4>
+                    <div class="input-group">
+                        <input type="text" id="ban-username" placeholder="Nom d'utilisateur" class="admin-input">
+                        <input type="text" id="ban-reason" placeholder="Raison (optionnel)" class="admin-input">
+                        <button onclick="banUser()" class="admin-button add">Bannir</button>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+       <!-- Section de surveillance simplifiée -->
+<div id="admin-realtime" class="admin-section">
+    <h2 class="admin-section-title">
+        <span class="section-icon">🟢</span>
+        Utilisateurs Connectés
+    </h2>
+    <div class="realtime-controls">
+        <button onclick="fetchActiveSessions()" class="admin-button">Voir qui est connecté</button>
+    </div>
+    <div id="realtime-display" class="admin-content"></div>
+</div>
+    </div>
+
+    
+
+    <div id="results-popup" class="results-modal" style="display:none;">
+        <div class="modal-backdrop"></div>
+        <div class="results-content">
+            <div class="results-header">
+                <h2 class="results-title">Temps écoulé!</h2>
+                <div class="results-icon">⏰</div>
+            </div>
+            
+            <div class="revealed-word-section">
+                <p class="reveal-text">Le mot était:</p>
+                <span id="revealed-word" class="revealed-word">mot</span>
+            </div>
+            
+            <div class="guessers-section">
+                <h3>Joueurs qui ont deviné:</h3>
+                <ul id="correct-guessers-list" class="guessers-list"></ul>
+            </div>
+            
+            <div class="results-actions">
+                <button id="new-game" class="neon-button primary">
+                    <span class="button-text">Nouvelle partie</span>
+                    <div class="button-glow"></div>
+                </button>
+                <button id="end-game" class="neon-button secondary">
+                    <span class="button-text">Terminer</span>
+                    <div class="button-glow"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
