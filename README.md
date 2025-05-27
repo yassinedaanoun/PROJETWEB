@@ -9,9 +9,7 @@ j'ai decider de créer pour mon projet web, Un jeu de dessin multijoueur en temp
 	•	Fonctionnalités
 	•	Technologies utilisées
 	•	Installation et configuration
-	•	Structure du projet
 	•	Interface d'administration
-	•	API Documentation
 	•	Sécurité
 	•	Contribuer
 ### Aperçu
@@ -71,12 +69,55 @@ Validation des entrées côté serveur
 Sessions sécurisées avec tracking d'activité
 ### Installation et configuration
 #### Prérequis
-
+-Le dossier est en zip sur le depot moodle
 -Deno 
 -PostgreSQL
 -Git:
+- Lancement du serveur commande: deno run --allow-net --allow-read back_server.ts
+-Telecharger lextension: Live Server sur vscode et ensuite faire un clic droit login.html et faire: open with live server
+#### Base de données - Tables:
+users : Comptes utilisateurs avec rôles
+dictionnaire : Mots disponibles pour le jeu
+player_scores : Scores persistants des joueurs
+games : Historique des parties
+banned_users : Utilisateurs bannis
+user_sessions : Sessions actives trackées
+activity_logs : Logs d'activité système
 
+### Interface d'administration:
+#### connexion avec le compte: 
+utilisateur: yassine
+mot de passe:Rayan123mot
+#### Fonctionnalités disponibles
+Gestion des utilisateurs
+Lister tous les utilisateurs inscrits
+Supprimer un compte utilisateur
+Bannir/Débannir des utilisateurs
+Voir les utilisateurs connectés en temps réel
 
+Gestion des scores
+Consulter tous les scores des joueurs
+Réinitialiser les scores d'un joueur spécifique
+Statistiques globales de performance
+
+Gestion du dictionnaire
+
+Ajouter de nouveaux mots
+Supprimer des mots existants
+Rechercher un mot spécifique
+
+Création d'un compte admin
+sql-- Après création d'un compte via l'interface
+UPDATE users SET role = 'admin' WHERE username = 'votre_username';
+### Sécurité:
+JWT sécurisé avec secret robuste
+Hashage bcrypt des mots de passe
+Middleware de bannissement automatique
+Validation des rôles pour l'administration
+CORS configuré pour éviter les attaques cross-origin
+Sanitisation des entrées utilisateur
+
+NB:j'ai eu un probleme pour les tokens, ils sont effectivement renvoye dans le body. j'ai bien compris qu'il fallait que ce soit en http only seulemt j'ai eu des problemes pour l'implenter.
 
 
 
