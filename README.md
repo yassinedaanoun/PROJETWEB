@@ -4,7 +4,7 @@
 j'ai decider de créer pour mon projet web, Un jeu de dessin multijoueur en temps réel inspiré de Skribbl.io, développé avec Deno, TypeScript et WebSockets.
 
 
-Table des matières
+#Table des matières
 	•	Aperçu
 	•	Fonctionnalités
 	•	Règles du jeu
@@ -15,10 +15,10 @@ Table des matières
 	•	API Documentation
 	•	Sécurité
 	•	Contribuer
--Aperçu
+#Aperçu
 The Guess Game est un jeu multijoueur en ligne où les joueurs alternent entre dessiner et deviner des mots. Un joueur dessine un mot secret sur un canvas partagé tandis que les autres tentent de le deviner dans le chat. Plus vous devinez rapidement, plus vous gagnez de points.
 
- -Fonctionnalités:
+#Fonctionnalités:
 Multijoueur en temps réel avec WebSockets
 Canvas de dessin interactif avec outils de couleur
 Chat en temps réel pour les devinettes
