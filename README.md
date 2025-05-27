@@ -11,7 +11,6 @@ j'ai decider de créer pour mon projet web, Un jeu de dessin multijoueur en temp
 	•	Installation et configuration
 	•	Interface d'administration
 	•	Sécurité
-	•	Contribuer
 ### Aperçu
 The Guess Game est un jeu multijoueur en ligne où les joueurs alternent entre dessiner et deviner des mots. Un joueur dessine un mot secret sur un canvas partagé tandis que les autres tentent de le deviner dans le chat. Plus vous devinez rapidement, plus vous gagnez de points.
 
@@ -59,9 +58,9 @@ JWT - Authentification par tokens
 bcrypt - Hashage sécurisé des mots de passe
 #### Frontend
 HTML5 Canvas - Zone de dessin interactive
-Vanilla JavaScript - Logique client sans framework
-CSS3 - Animations et effets visuels avancés
-WebSocket API - Communication bidirectionnelle
+ JavaScript - Logique client sans framework
+CSS - Animations et effets visuels avancés
+WebSocket API
 #### Sécurité
 CORS configuré pour les requêtes cross-origin
 Middleware de bannissement automatique
@@ -72,7 +71,7 @@ Sessions sécurisées avec tracking d'activité
 -Le dossier est en zip sur le depot moodle
 -Deno 
 -PostgreSQL
--Git:
+
 - Lancement du serveur commande: deno run --allow-net --allow-read back_server.ts
 -Telecharger lextension: Live Server sur vscode et ensuite faire un clic droit login.html et faire: open with live server
 #### Base de données - Tables:
