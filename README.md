@@ -117,6 +117,7 @@ CORS configuré pour éviter les attaques cross-origin
 Sanitisation des entrées utilisateur
 
 NB:j'ai eu un probleme pour les tokens, ils sont effectivement renvoye dans le body. j'ai bien compris qu'il fallait que ce soit en http only seulemt j'ai eu des problemes pour l'implenter.
+NB: j'ai une verion plus basic qui a reussi a etre deployer sur le server de polytech nommer: backweb et frontweb. mais n'yant pas marcher j'ai preferer la laisser tomber
 
 
 
